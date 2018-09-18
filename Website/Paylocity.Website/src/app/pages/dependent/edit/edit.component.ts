@@ -22,6 +22,7 @@ export class DependentEditComponent implements AfterViewInit, OnInit
 	public settings: Settings;
 
 	public dependent: Dependent = new Dependent();
+	public employeeId: string = '';
 
 	public errorMessage: string = '';
 
@@ -44,6 +45,8 @@ export class DependentEditComponent implements AfterViewInit, OnInit
 			(params: Params) =>
 			{
 				if (params['id'] !== undefined) { this.dependent.dependentId = params['id']; }
+
+				if (params['employeeId'] !== undefined) { this.employeeId = params['employeeId']; }
 			}
 		);
 
@@ -80,7 +83,7 @@ export class DependentEditComponent implements AfterViewInit, OnInit
 				.update(this.dependent)
 				.subscribe
 				(
-					response => this.router.navigate(['/dependent']),
+					response => this.router.navigate(['/dependent/' + this.employeeId]),
 					error =>
 					{
 						console.error(error);
@@ -90,7 +93,7 @@ export class DependentEditComponent implements AfterViewInit, OnInit
 		}
 	}
 
-	cancelDetail() { this.router.navigate(['/dependent']); }
+	cancelDetail() { this.router.navigate(['/dependent/' + this.employeeId]); }
 
 	ngAfterViewInit() { this.settings.loadingSpinner = false; }
 }

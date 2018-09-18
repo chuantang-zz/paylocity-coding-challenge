@@ -61,7 +61,7 @@ export class DependentCreateComponent implements AfterViewInit, OnInit
 				.create(this.dependent)
 				.subscribe
 				(
-					response => this.router.navigate(['/employee']),
+					response => this.router.navigate(['/dependent/' + this.dependent.employeeId]),
 					error =>
 					{
 						console.error(error);

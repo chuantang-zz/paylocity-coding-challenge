@@ -53,7 +53,7 @@ export class DependentComponent implements OnInit
 
 	routeToCreate()
 	{
-		this.router.navigate(['/dependent/create']);
+		this.router.navigate(['/dependent/create/' + this.employeeId]);
 	}
 
 	updateFilter(event)
@@ -79,13 +79,6 @@ export class DependentComponent implements OnInit
 				{
 					this.dependents = results;
 
-					this.dependents.forEach
-					(
-						dependent =>
-						{
-						}
-					);
-
 					this.temp = [...this.dependents];
 					this.rows = this.dependents;
 					setTimeout(() => { this.loadingIndicator = false; }, 1500);
@@ -105,5 +98,5 @@ export class DependentComponent implements OnInit
 			);
 	}
 
-	goToDetail(id: string) { this.router.navigate(['/dependent/edit/' + id]); }
+	goToDetail(id: string) { this.router.navigate(['/dependent/edit/' + id + '/employeeid/' + this.employeeId]); }
 }

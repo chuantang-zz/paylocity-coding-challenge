@@ -12,9 +12,9 @@ import { DependentService } from './dependent.service';
 
 export const routes =
 [
-	{ path: '', component: DependentComponent, pathMatch: 'full', data: { breadcrumb: 'Dependent' } },
+	{ path: ':id', component: DependentComponent, pathMatch: 'full', data: { breadcrumb: 'Dependent' } },
 	{ path: 'create/:id', component: DependentCreateComponent, pathMatch: 'full', data: { breadcrumb: 'Dependent Create' } },
-	{ path: 'edit/:id', component: DependentEditComponent, pathMatch: 'full', data: { breadcrumb: 'Dependent Edit' } }
+	{ path: 'edit/:id/employeeid/:employeeId', component: DependentEditComponent, pathMatch: 'full', data: { breadcrumb: 'Dependent Edit' } }
 ];
 
 @NgModule

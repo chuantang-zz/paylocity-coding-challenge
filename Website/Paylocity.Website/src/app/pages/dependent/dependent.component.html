@@ -5,7 +5,7 @@
 				<input matInput placeholder="Type to filter the first name column..." (keyup)="updateFilter($event)">
 			</mat-form-field>
 			<button color="primary" mat-raised-button="" class="mat-raised-button mat-primary" (click)="routeToCreate()">
-				<span class="mat-button-wrapper">Create Employee</span>
+				<span class="mat-button-wrapper">Create Dependent</span>
 				<div class="mat-button-ripple mat-ripple" matripple=""></div>
 				<div class="mat-button-focus-overlay"></div>
 			</button>
@@ -26,7 +26,7 @@
 
 			<ngx-datatable-column name="Actions" prop="position" [flexGrow]="2">
 				<ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-					<button color="primary" mat-icon-button="" class="mat-icon-button" (click)="goToDetail(row.employeeId)">
+					<button color="primary" mat-icon-button="" class="mat-icon-button" (click)="goToDetail(row.dependentId)">
 						<span class="mat-button-wrapper"><mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">build</mat-icon></span>
 						<div class="mat-button-ripple mat-ripple mat-button-ripple-round" matripple=""></div>
 						<div class="mat-button-focus-overlay"></div>
