@@ -1,0 +1,26 @@
+<div fxLayout="column">
+	<div class="flex-p">
+		<form [formGroup]="formCreate" (ngSubmit)="onSubmit(formCreate)">
+			<mat-card>
+				<mat-card-header fxLayoutAlign="center">
+					<mat-card-subtitle>
+						<h2>Create Dependent</h2>
+					</mat-card-subtitle>
+				</mat-card-header>
+
+				<mat-error>{{errorMessage}}</mat-error>
+
+				<br/>
+				<mat-card-content fxLayout="column" fxLayoutAlign="center" class="box-content">
+					<mat-form-field><input formControlName="firstName" matInput placeholder="Employee First Name"></mat-form-field>
+					<mat-form-field><input formControlName="lastName" matInput placeholder="Employee Last Name"></mat-form-field>
+
+					<br/>
+					<p><button color="primary" mat-raised-button>Create Dependent</button></p>
+
+					<br/><br/>
+				</mat-card-content>
+			</mat-card>
+		</form>
+	</div>
+</div>

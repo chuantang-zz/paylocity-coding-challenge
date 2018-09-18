@@ -1,0 +1,24 @@
+<div fxLayout="column">
+	<div class="flex-p">
+		<form [formGroup]="formCreate" (ngSubmit)="onSubmit(formCreate)">
+			<mat-card>
+				<mat-card-header fxLayoutAlign="center">
+					<mat-card-subtitle>
+						<h2>Edit Employee</h2>
+					</mat-card-subtitle>
+				</mat-card-header>
+
+				<mat-error>{{errorMessage}}</mat-error>
+
+				<br/>
+				<mat-card-content fxLayout="column" fxLayoutAlign="center" class="box-content">
+					<mat-form-field><input formControlName="firstName" matInput placeholder="Employee First Name"></mat-form-field>
+					<mat-form-field><input formControlName="lastName" matInput placeholder="Employee Last Name"></mat-form-field>
+
+					<br/>
+					<p><button color="warn" mat-raised-button (click)="cancelDetail()">Cancel</button> &nbsp; <button color="primary" mat-raised-button>Update Employee</button></p>
+				</mat-card-content>
+			</mat-card>
+		</form>
+	</div>
+</div>

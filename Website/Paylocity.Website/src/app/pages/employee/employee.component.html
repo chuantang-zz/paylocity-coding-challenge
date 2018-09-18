@@ -1,0 +1,72 @@
+<div fxLayout="row wrap">
+	<div fxFlex="100" fxFlex.gt-sm="100" class="flex-p">
+		<div fxLayout="column" class="mat-elevation-z8">
+			<mat-form-field class="p-1">
+				<input matInput placeholder="Type to filter the first name column..." (keyup)="updateFilter($event)">
+			</mat-form-field>
+			<button color="primary" mat-raised-button="" class="mat-raised-button mat-primary" (click)="routeToCreate()">
+				<span class="mat-button-wrapper">Create Employee</span>
+				<div class="mat-button-ripple mat-ripple" matripple=""></div>
+				<div class="mat-button-focus-overlay"></div>
+			</button>
+		</div>
+
+		<ngx-datatable #table class="material striped" [headerHeight]="50" [limit]="10" [columnMode]="'flex'" [footerHeight]="50" [rowHeight]="'auto'" [rows]="rows" 
+			[loadingIndicator]="loadingIndicator" [selected]="selected">
+			<ngx-datatable-column [width]="30" [sortable]="true" [canAutoResize]="false" [draggable]="true" [resizeable]="true" [headerCheckboxable]="true"></ngx-datatable-column>
+
+			<!-- Row Detail Template -->
+			<ngx-datatable-row-detail [rowHeight]="'auto'" #myDetailRow (toggle)="onDetailToggle($event)">
+				<ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+					<div style="padding-left:35px;">
+						<div><strong>Details</strong></div>
+						<div>Yearly Wage: ${{ row.yearlyWage }}</div>
+						<div>Total Deductions: ${{ row.totalDeductions }}</div>
+						<div>Final Wage: ${{ row.finalWage }}</div>
+					</div>
+				</ng-template>
+			</ngx-datatable-row-detail>
+
+			<!-- Column Templates -->
+			<ngx-datatable-column [width]="50" [resizeable]="false" [sortable]="false" [draggable]="false" [canAutoResize]="false">
+				<ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+					<a href="javascript:void(0)" [class.datatable-icon-right]="!expanded" [class.datatable-icon-down]="expanded" title="Expand/Collapse Row" (click)="toggleExpandRow(row)"> </a>
+				</ng-template>
+			</ngx-datatable-column>
+
+			<ngx-datatable-column name="First Name" prop="firstName" [flexGrow]="2">
+				<ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">{{value}}</ng-template>
+			</ngx-datatable-column>
+
+			<ngx-datatable-column name="Last Name" prop="lastName" [flexGrow]="2">
+				<ng-template ngx-datatable-cell-template let-value="value">{{value}}</ng-template>
+			</ngx-datatable-column>
+
+			<ngx-datatable-column name="Total Dependents" prop="dependentCount" [flexGrow]="2">
+				<ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">{{value}}</ng-template>
+			</ngx-datatable-column>
+
+			<ngx-datatable-column name="Actions" prop="position" [flexGrow]="2">
+				<ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+					<button color="primary" mat-icon-button="" class="mat-icon-button" (click)="goToDetail(row.employeeId)">
+						<span class="mat-button-wrapper"><mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">build</mat-icon></span>
+						<div class="mat-button-ripple mat-ripple mat-button-ripple-round" matripple=""></div>
+						<div class="mat-button-focus-overlay"></div>
+					</button>
+					<button color="primary" mat-icon-button="" class="mat-icon-button" (click)="goToCreateDependent(row.employeeId)">
+						<span class="mat-button-wrapper">
+							<mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">pregnant_woman</mat-icon>
+						</span>
+						<div class="mat-button-ripple mat-ripple mat-button-ripple-round" matripple=""></div>
+						<div class="mat-button-focus-overlay"></div>
+					</button>
+					<button color="warn" mat-icon-button="" class="mat-icon-button" (click)="delete(row.employeeId)">
+						<span class="mat-button-wrapper"><mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">delete</mat-icon></span>
+						<div class="mat-button-ripple mat-ripple mat-button-ripple-round" matripple=""></div>
+						<div class="mat-button-focus-overlay"></div>
+					</button>
+				</ng-template>
+			</ngx-datatable-column>
+		</ngx-datatable>
+	</div>
+</div>

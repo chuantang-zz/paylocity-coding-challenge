@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Paylocity.Api.Domain.Interface\Paylocity.Api.Domain.Interface.csproj" />
+    <ProjectReference Include="..\..\Domain\Paylocity.Api.Domain.Model\Paylocity.Api.Domain.Model.csproj" />
+    <ProjectReference Include="..\..\Domain\Paylocity.Api.Domain\Paylocity.Api.Domain.csproj" />
+    <ProjectReference Include="..\..\Repository\Paylocity.Api.Repository.Interface\Paylocity.Api.Repository.Interface.csproj" />
+    <ProjectReference Include="..\..\Repository\Paylocity.Api.Repository\Paylocity.Api.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

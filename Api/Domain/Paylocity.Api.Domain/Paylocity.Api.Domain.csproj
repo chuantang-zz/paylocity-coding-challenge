@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Repository\Paylocity.Api.Repository.Interface\Paylocity.Api.Repository.Interface.csproj" />
+    <ProjectReference Include="..\..\Repository\Paylocity.Api.Repository.Model\Paylocity.Api.Repository.Model.csproj" />
+    <ProjectReference Include="..\..\Repository\Paylocity.Api.Repository\Paylocity.Api.Repository.csproj" />
+    <ProjectReference Include="..\Paylocity.Api.Domain.Interface\Paylocity.Api.Domain.Interface.csproj" />
+    <ProjectReference Include="..\Paylocity.Api.Domain.Model\Paylocity.Api.Domain.Model.csproj" />
+  </ItemGroup>
+
+</Project>

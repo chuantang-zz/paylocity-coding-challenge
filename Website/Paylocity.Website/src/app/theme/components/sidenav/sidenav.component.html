@@ -1,0 +1,28 @@
+<mat-toolbar color="primary" [fxLayoutAlign]="(settings.menuType != 'mini') ? 'space-between center' : 'center center'" class="sidenav-header">
+	<a mat-raised-button color="accent" routerLink="/" (click)="closeSubMenus()" class="small-logo">M</a>
+	<a *ngIf="settings.menuType == 'default'" class="logo" routerLink="/" (click)="closeSubMenus()">Paylocity</a> 
+</mat-toolbar>
+
+<div fxLayout="column" fxLayoutAlign="center center" class="user-block transition-2" [class.show]="settings.sidenavUserBlock"> 
+<!--	<div [fxLayout]="(settings.menuType != 'default') ? 'column' : 'row'" [fxLayoutAlign]="(settings.menuType != 'default') ? 'center center' : 'space-around center'" class="user-info-wrapper">
+		<img [src]="userImage" alt="user-image">
+		<div class="user-info">
+			<p class="name">Emilio Verdines</p>
+			<p *ngIf="settings.menuType == 'default'" class="position">Web developer <br> <small class="muted-text">Member since May. 2016</small></p>
+		</div>
+	</div>
+	<div *ngIf="settings.menuType != 'mini'" fxLayout="row" fxLayoutAlign="space-around center" class="w-100 muted-text">
+		<button mat-icon-button><mat-icon>person_outline</mat-icon></button>
+		<a mat-icon-button routerLink="/mailbox">
+			<mat-icon>mail_outline</mat-icon>
+		</a>
+		<a mat-icon-button routerLink="/login">
+			<mat-icon>power_settings_new</mat-icon>
+		</a>
+	</div> -->
+</div>
+
+<div id="sidenav-menu-outer" class="sidenav-menu-outer" perfectScrollbar [class.user-block-show]="settings.sidenavUserBlock">
+	<span *ngIf="!menuItems">loading....</span>
+	<app-vertical-menu [menuItems]="menuItems" [menuParentId]="0"></app-vertical-menu> 
+</div>

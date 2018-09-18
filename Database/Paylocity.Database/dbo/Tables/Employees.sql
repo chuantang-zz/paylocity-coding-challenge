@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[Employees]
+(
+	[EmployeeId]	UNIQUEIDENTIFIER CONSTRAINT [DF_Employees_EmployeeId] DEFAULT (NEWSEQUENTIALID()) ROWGUIDCOL NOT NULL,
+	[FirstName]		NVARCHAR (256) NOT NULL,
+	[LastName]		NVARCHAR (256) NOT NULL,
+	[CreatedDate]	DATETIME2 (7) CONSTRAINT [DF_Employees_CreatedDate] DEFAULT (GETUTCDATE()) NOT NULL, 
+	[ModifiedDate]	DATETIME2 (7) NOT NULL, 
+
+	CONSTRAINT [PK_Employees] PRIMARY KEY ([EmployeeId])
+);

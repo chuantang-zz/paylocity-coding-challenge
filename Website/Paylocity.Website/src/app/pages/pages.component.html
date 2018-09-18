@@ -1,0 +1,30 @@
+<mat-sidenav-container>
+	<mat-sidenav *ngIf="settings.menu == 'vertical'" [opened]="settings.sidenavIsOpened" [mode]="(settings.sidenavIsPinned) ? 'side' : 'over'" #sidenav class="sidenav mat-elevation-z6">
+		<app-sidenav></app-sidenav>
+	</mat-sidenav>
+	<mat-sidenav-content perfectScrollbar [disabled]="settings.fixedHeader" (psScrollY)="onPsScrollY($event)">
+		<mat-toolbar color="primary" class="flex-p-x">
+			<div fxLayout="row" fxLayoutAlign="space-between center" class="w-100">
+				<div fxLayout="row" fxLayoutAlign="center center">
+					<button *ngIf="settings.menu == 'vertical'" mat-icon-button (click)="toggleSidenav()">
+						<mat-icon>menu</mat-icon>
+					</button> 
+					<a *ngIf="settings.menu == 'horizontal'" mat-raised-button color="accent" routerLink="/" (click)="closeSubMenus()" class="small-logo">P</a>
+					<a *ngIf="settings.menu == 'horizontal'" class="logo" routerLink="/" (click)="closeSubMenus()">Paylocity</a>
+				</div>
+				<div fxLayout="row" fxLayoutAlign="end center">
+					<app-fullscreen></app-fullscreen> 
+				</div>
+			</div>
+		</mat-toolbar>
+
+		<div id="main-content" class="inner-sidenav-content transition-2" perfectScrollbar [disabled]="!settings.fixedHeader" (psScrollY)="onPsScrollY($event)" [class.horizontal-menu-hidden]="isStickyMenu"> 
+			<app-breadcrumb></app-breadcrumb>
+			<router-outlet></router-outlet>
+		</div>
+
+		<div *ngIf="showBackToTop" fxLayout="row" fxLayoutAlign="center center" class="back-to-top transition-2" (click)="scrollToTop();">
+			<mat-icon>arrow_upward</mat-icon>
+		</div>
+	</mat-sidenav-content>
+</mat-sidenav-container>
