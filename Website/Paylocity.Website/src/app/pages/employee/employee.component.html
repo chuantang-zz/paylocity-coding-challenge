@@ -60,7 +60,7 @@
 						<div class="mat-button-ripple mat-ripple mat-button-ripple-round" matripple=""></div>
 						<div class="mat-button-focus-overlay"></div>
 					</button>
-					<button color="warn" mat-icon-button="" class="mat-icon-button" (click)="delete(row.employeeId)">
+					<button color="warn" [disabled]="row.dependentCount > 0" mat-icon-button="" class="mat-icon-button" (click)="delete(row.employeeId)">
 						<span class="mat-button-wrapper"><mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">delete</mat-icon></span>
 						<div class="mat-button-ripple mat-ripple mat-button-ripple-round" matripple=""></div>
 						<div class="mat-button-focus-overlay"></div>

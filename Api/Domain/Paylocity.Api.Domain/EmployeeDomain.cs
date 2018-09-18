@@ -40,10 +40,19 @@
 
 			foreach (var model in domainModels)
 			{
-				CalculateDiscount(model);
+				var discountApplied = false;
+				discountApplied = CalculateDiscount(model, model.FirstName);
 
 				model.Dependents = await GetDependents(model.EmployeeId);
 				model.DependentCount = model.Dependents.Count();
+
+				if (model.DependentCount > 0)
+				{
+					foreach (var dependent in model.Dependents)
+					{
+						if (discountApplied == false) discountApplied = CalculateDiscount(model, dependent.FirstName);
+					}
+				}
 			}
 
 			return domainModels;
@@ -97,19 +106,23 @@
 			return domainModels;
 		}
 
-		private void CalculateDiscount(EmployeeDomainModel model)
+		private bool CalculateDiscount(EmployeeDomainModel model, string firstName)
 		{
+			var discountApplied = false;
+
 			model.YearlyWage = 2000 * 26;
 
 			model.TotalDeductions = 1000;
-			var applyDiscount = model.FirstName.StartsWith('A');
-			if (applyDiscount)
+			discountApplied = firstName.StartsWith('A');
+			if (discountApplied)
 			{
 				var discount = model.YearlyWage / 10;
 				model.TotalDeductions = model.TotalDeductions + discount;
 			}
 
 			model.FinalWage = model.YearlyWage - model.TotalDeductions;
+
+			return discountApplied;
 		}
 
 		~EmployeeDomain() { Dispose(false); }
