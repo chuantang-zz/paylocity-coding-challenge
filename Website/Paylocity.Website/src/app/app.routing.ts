@@ -14,7 +14,7 @@ export const routes: Routes =
 			{ path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 			{ path: 'dashboard', loadChildren: '../app/pages/dashboard/dashboard.module#DashboardModule', data: { breadcrumb: 'Dashboard' } },
 			{ path: 'employee', loadChildren: '../app/pages/employee/employee.module#EmployeeModule', data: { breadcrumb: 'Employee' } },
-			{ path: 'dependent', loadChildren: '../app/pages/dependent/dependent.module#DependentModule', data: { breadcrumb: 'Dependent' } }
+			{ path: 'dependent/:id', loadChildren: '../app/pages/dependent/dependent.module#DependentModule', data: { breadcrumb: 'Dependent' } }
 		]
 	},
 	{ path: 'error', component: ErrorComponent, data: { breadcrumb: 'Error' } },

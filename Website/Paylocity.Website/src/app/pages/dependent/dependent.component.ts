@@ -1,6 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { AppSettings } from '../../app.settings';
 import { Settings } from '../../app.settings.model';
@@ -19,7 +19,7 @@ import { DependentService } from './dependent.service';
 	}
 )
 
-export class DependentComponent
+export class DependentComponent implements OnInit
 {
 	@ViewChild(DatatableComponent) table: DatatableComponent;
 	editing = {};
@@ -31,10 +31,23 @@ export class DependentComponent
 
 	public settings: Settings;
 	public dependents: Dependent[] = [];
+	public employeeId: string = '';
 
-	constructor(private router: Router, public appSettings: AppSettings, private dependentService: DependentService)
+	constructor(private router: Router, public appSettings: AppSettings, private activatedRoute: ActivatedRoute, private dependentService: DependentService)
 	{
 		this.settings = this.appSettings.settings;
+	}
+
+	ngOnInit(): void
+	{
+		this.activatedRoute.params.forEach
+		(
+			(params: Params) =>
+			{
+				if (params['id'] !== undefined) { this.employeeId = params['id']; }
+			}
+		);
+
 		this.getData();
 	}
 
@@ -59,7 +72,7 @@ export class DependentComponent
 	getData()
 	{
 		this.dependentService
-			.get()
+			.getByEmployeeId(this.employeeId)
 			.subscribe
 			(
 				results =>

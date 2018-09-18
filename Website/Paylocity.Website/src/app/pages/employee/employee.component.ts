@@ -87,5 +87,6 @@ export class EmployeeComponent
 
 	goToDetail(id: string) { this.router.navigate(['/employee/edit/' + id]); }
 
+	goToDependents(id: string) { this.router.navigate(['/dependent/' + id]); }
 	goToCreateDependent(id: string) { this.router.navigate(['/dependent/create/' + id]); }
 }

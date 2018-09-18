@@ -32,6 +32,14 @@ export class DependentService
 		return this.http.get<Dependent>(requestUrl, { headers: httpHeaders });
 	}
 
+	public getByEmployeeId(id: string): Observable<Dependent[]>
+	{
+		const requestUrl = this.baseUrl + '/EmployeeId/' + id;
+		const httpHeaders = this.createHeader();
+
+		return this.http.get<Dependent[]>(requestUrl, { headers: httpHeaders });
+	}
+
 	public update(dependent: Dependent): Observable<Dependent>
 	{
 		const requestUrl = this.baseUrl + '/' + dependent.dependentId;

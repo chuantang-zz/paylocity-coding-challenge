@@ -43,7 +43,9 @@
 			</ngx-datatable-column>
 
 			<ngx-datatable-column name="Total Dependents" prop="dependentCount" [flexGrow]="2">
-				<ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">{{value}}</ng-template>
+				<ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">
+					<a href="javascript:void(0)" (click)="goToDependents(row.employeeId)">{{value}}</a>
+				</ng-template>
 			</ngx-datatable-column>
 
 			<ngx-datatable-column name="Actions" prop="position" [flexGrow]="2">
