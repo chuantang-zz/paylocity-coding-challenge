@@ -4,7 +4,6 @@ export class Employee
 	public firstName: string;
 	public lastName: string;
 	public modifiedDate: string;
-	public dependents: [];
 
 	public dependentCount: number;
 
@@ -18,7 +17,6 @@ export class Employee
 		this.firstName = '';
 		this.lastName = '';
 		this.modifiedDate = new Date().toLocaleDateString();
-		this.dependents = [];
 
 		this.dependentCount = 0;
 		this.yearlyWage = 0;
